@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace StoreApi.Models
 {
     public class Product
     {
+        [JsonIgnore]
         public int Id { get; set; }
 
         [Required]
