@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Cache\" />
     <Folder Include="Resilience\" />
     <Folder Include="Services\" />
