@@ -28,6 +28,7 @@ namespace StoreApi.Controllers
                                       p.Name,
                                       p.Description,
                                       p.Price,
+                                      p.Stock,
                                       CategoryName = c.Name
                                   }).ToListAsync();
 
