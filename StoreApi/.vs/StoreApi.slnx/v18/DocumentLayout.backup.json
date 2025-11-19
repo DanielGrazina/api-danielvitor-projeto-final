@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\models\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:models\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,8 +19,20 @@
       "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:data\\storedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Migrations\\20251117181644_AddUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20251117181644_AddUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,16 +55,16 @@
       "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:data\\storedbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\migrations\\20251117171652_atualizarteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:migrations\\20251117171652_atualizarteste.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\migrations\\20251117163454_addcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:migrations\\20251117163454_addcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\migrations\\20251117181644_adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:migrations\\20251117181644_adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,11 +74,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T20:12:14.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Models\\DTOs\\LoginDto.cs",
+              "RelativeDocumentMoniker": "Models\\DTOs\\LoginDto.cs",
+              "ToolTip": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Models\\DTOs\\LoginDto.cs",
+              "RelativeToolTip": "Models\\DTOs\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T20:11:46.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "20251117181644_AddUser.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Migrations\\20251117181644_AddUser.cs",
               "RelativeDocumentMoniker": "Migrations\\20251117181644_AddUser.cs",
@@ -78,12 +112,11 @@
               "RelativeToolTip": "Migrations\\20251117181644_AddUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T18:16:44.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T18:16:44.516Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
@@ -91,12 +124,11 @@
               "RelativeToolTip": "Controllers\\UsersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T18:16:02.486Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T18:16:02.486Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "20251117171652_AtualizarTeste.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Migrations\\20251117171652_AtualizarTeste.cs",
               "RelativeDocumentMoniker": "Migrations\\20251117171652_AtualizarTeste.cs",
@@ -108,7 +140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "20251117163454_AddCategory.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Migrations\\20251117163454_AddCategory.cs",
               "RelativeDocumentMoniker": "Migrations\\20251117163454_AddCategory.cs",
@@ -120,33 +152,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
               "ToolTip": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\CategoriesController.cs",
               "RelativeToolTip": "Controllers\\CategoriesController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAIwEIAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-17T16:42:07.237Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Models\\Category.cs",
               "RelativeDocumentMoniker": "Models\\Category.cs",
               "ToolTip": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Models\\Category.cs",
               "RelativeToolTip": "Models\\Category.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T16:32:11.569Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T16:32:11.569Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
@@ -154,12 +185,11 @@
               "RelativeToolTip": "Controllers\\ProductController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB4AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T16:17:46.902Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-17T16:17:46.902Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "StoreDbContextFactory.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Data\\StoreDbContextFactory.cs",
               "RelativeDocumentMoniker": "Data\\StoreDbContextFactory.cs",
@@ -171,7 +201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -183,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -195,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "StoreDbContext.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Data\\StoreDbContext.cs",
               "RelativeDocumentMoniker": "Data\\StoreDbContext.cs",
@@ -203,38 +233,35 @@
               "RelativeToolTip": "Data\\StoreDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T16:26:06.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T16:26:06.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
               "ToolTip": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T16:25:28.401Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T16:25:28.401Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Models\\Product.cs",
               "RelativeDocumentMoniker": "Models\\Product.cs",
               "ToolTip": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Models\\Product.cs",
               "RelativeToolTip": "Models\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T16:25:06.017Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-14T16:25:06.017Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 5,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Dockerfile",
               "RelativeDocumentMoniker": "Dockerfile",
