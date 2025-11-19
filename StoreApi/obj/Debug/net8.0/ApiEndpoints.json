@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "StoreApi.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "StoreApi.Models.DTOs.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "StoreApi.Controllers.CategoriesController",
     "Method": "GetCategories",
     "RelativePath": "api/Categories",
