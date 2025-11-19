@@ -234,6 +234,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "StoreApi.Controllers.SecureController",
+    "Method": "Secret",
+    "RelativePath": "api/Secure/secret",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "StoreApi.Controllers.UsersController",
     "Method": "GetUsers",
     "RelativePath": "api/Users",

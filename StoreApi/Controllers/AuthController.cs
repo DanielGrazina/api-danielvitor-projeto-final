@@ -3,6 +3,10 @@ using StoreApi.Data;
 using StoreApi.Models;
 using StoreApi.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace StoreApi.Controllers
 {
@@ -11,10 +15,12 @@ namespace StoreApi.Controllers
     public class AuthController : ControllerBase
     {
         private readonly StoreDbContext _context;
+        private readonly IConfiguration _config;
 
-        public AuthController(StoreDbContext context)
+        public AuthController(StoreDbContext context, IConfiguration config)
         {
             _context = context;
+            _config = config;
         }
 
         [HttpPost("login")]
@@ -28,16 +34,32 @@ namespace StoreApi.Controllers
             if (user.Password != login.Password)
                 return Unauthorized(new { message = "Password incorreta." });
 
+            // Criar o Token
+            var jwtSettings = _config.GetSection("Jwt");
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim("name", user.Name),
+            };
+
+            var token = new JwtSecurityToken(
+                issuer: jwtSettings["Issuer"],
+                audience: jwtSettings["Audience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddHours(2),
+                signingCredentials: creds
+            );
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
             return Ok(new
             {
                 message = "Login efetuado com sucesso!",
-                user = new
-                {
-                    user.Id,
-                    user.Name,
-                    user.Email,
-                    user.CreatedAt
-                }
+                token = tokenString
             });
         }
     }
