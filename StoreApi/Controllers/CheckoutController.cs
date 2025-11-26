@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using StoreApi.Data;
 using StoreApi.Models;
 using System.Security.Claims;
+using System.Net.Http;
+using System.Text.Json;
 
 namespace StoreApi.Controllers
 {
@@ -45,6 +47,17 @@ namespace StoreApi.Controllers
             };
 
             _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+            var client = new HttpClient();
+
+            var response = await client.PostAsync(
+                "http://mountebank:4545/payment",
+                new StringContent("{}", Encoding.UTF8, "application/json")
+            );
+
+            var json = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("Pagamento mock -> " + json);
+
 
             _context.CartItems.RemoveRange(cart.Items);
 
