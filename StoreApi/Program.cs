@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using StoreApi.Data;
 using System.Text;
@@ -39,6 +40,12 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler =
+            ReferenceHandler.IgnoreCycles;
+    });
 
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
