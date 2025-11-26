@@ -149,3 +149,15 @@ C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\tr\Microsoft.Code
 C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.csproj.AssemblyReference.cache
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.AssemblyInfoInputs.cache
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.AssemblyInfo.cs
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.csproj.CoreCompileInputs.cache
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.sourcelink.json
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.dll
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\refint\StoreApi.dll
+C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.pdb
