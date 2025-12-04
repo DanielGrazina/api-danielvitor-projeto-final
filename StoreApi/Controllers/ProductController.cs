@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using StoreApi.Data;
 using StoreApi.Models;
+using Microsoft.Extensions.Caching.Distributed;
+using System.Text.Json;
 
 namespace StoreApi.Controllers
 {
@@ -10,28 +13,50 @@ namespace StoreApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly StoreDbContext _context;
+        private readonly IDistributedCache _cache;
 
-        public ProductsController(StoreDbContext context)
+        public ProductsController(StoreDbContext context, IDistributedCache cache)
         {
             _context = context;
+            _cache = cache;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAll()
         {
-            var products = await (from p in _context.Products
-                                  join c in _context.Categories
-                                  on p.CategoryId equals c.Id
-                                  select new
-                                  {
-                                      p.Id,
-                                      p.Name,
-                                      p.Description,
-                                      p.Price,
-                                      p.Stock,
-                                      CategoryName = c.Name
-                                  }).ToListAsync();
+            var cached = await _cache.GetStringAsync("products_with_category");
 
+            if (cached != null)
+            {
+                var productsCached =
+                    JsonSerializer.Deserialize<List<object>>(cached);
+
+                return Ok(productsCached);
+            }
+
+            var products = await (
+                from p in _context.Products
+                join c in _context.Categories
+                    on p.CategoryId equals c.Id
+                select new
+                {
+                    p.Id,
+                    p.Name,
+                    p.Description,
+                    p.Price,
+                    p.Stock,
+                    CategoryName = c.Name
+                }
+            ).ToListAsync();
+
+            await _cache.SetStringAsync(
+                "products_with_category",
+                JsonSerializer.Serialize(products),
+                new DistributedCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30)
+                }
+            );
             return Ok(products);
         }
 

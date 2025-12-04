@@ -161,3 +161,6 @@ C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\S
 C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.dll
 C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\refint\StoreApi.dll
 C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\StoreApi.pdb
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\StackExchange.Redis.dll

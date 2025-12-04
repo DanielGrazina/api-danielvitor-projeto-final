@@ -1,66 +1,68 @@
 services:
-    api:
-        container_name: api-projeto
-        build:
-            context: ./StoreApi
-            dockerfile: Dockerfile
-        ports:
-            - "5000:8080"
-        depends_on:
-            - db
-            - redis
-            - mountebank
-        environment:
-            ASPNETCORE_ENVIRONMENT: "Development"
-            ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=projeto;Username=admin;Password=admin"
-            Redis__Host: "redis:6379"
-            Imposter__Url: "http://mountebank:4545"
-        networks:
-            - backend
+  api:
+    container_name: api-projeto
+    build:
+      context: ./StoreApi
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8080"
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=projeto;Username=admin;Password=admin"
+      Redis__ConnectionString: "redis:6379"
+    networks:
+      - backend
 
-    db:
-        container_name: postgres-projeto
-        image: postgres:16
-        restart: always
-        ports:
-            - "5432:5432"
-        environment:
-            POSTGRES_USER: admin
-            POSTGRES_PASSWORD: admin
-            POSTGRES_DB: projeto
-        volumes:
-            - ./database:/docker-entrypoint-initdb.d
-            - postgres-data:/var/lib/postgresql/data
-        networks:
-            - backend
+  db:
+    container_name: postgres-projeto
+    image: postgres:16
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: projeto
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend
 
-    redis:
-        container_name: redis-projeto
-        image: redis:latest
-        restart: always
-        ports:
-            - "6379:6379"
-        networks:
-            - backend
+  redis:
+    container_name: redis-projeto
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes", "--protected-mode", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - backend
 
-    mountebank:
-        container_name: mountebank-projeto
-        image: andyrbell/mountebank:latest
-        restart: always
-        ports:
-            - "2525:2525"
-            - "4545:4545"
-        volumes:
-            - ./imposter/mountebank.json:/mountebank/mountebank.json
-        command: >
-         mb start --configfile /mountebank/mountebank.json 
-        networks:
-            - backend
-
+  mountebank:
+    container_name: mountebank-projeto
+    image: andyrbell/mountebank:latest
+    restart: always
+    ports:
+      - "2525:2525"
+      - "4545:4545"
+    volumes:
+      - ./imposter/mountebank.json:/mountebank/mountebank.json
+    command: >
+      mb start --configfile /mountebank/mountebank.json
+    networks:
+      - backend
 
 networks:
-    backend:
-
-
+  backend:
+  
 volumes:
-    postgres-data:
+  postgres-data:
