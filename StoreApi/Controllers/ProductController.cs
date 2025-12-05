@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Distributed;
 using StoreApi.Data;
 using StoreApi.Models;
-using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
 namespace StoreApi.Controllers
@@ -21,6 +22,7 @@ namespace StoreApi.Controllers
             _cache = cache;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAll()
         {
