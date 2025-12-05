@@ -10,7 +10,7 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      await api.post("/auth/register", {
+      await api.post("Users", {
         name,
         email,
         password
