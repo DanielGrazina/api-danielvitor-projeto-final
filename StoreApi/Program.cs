@@ -5,6 +5,12 @@ using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using StoreApi.Data;
 using System.Text;
+using Polly;
+using Polly.Extensions.Http;
+using System.Net.Http;
+using Polly.Retry;
+using Polly.CircuitBreaker;
+using Polly.Timeout;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -79,6 +85,11 @@ builder.Services.AddAuthentication(o =>
     };
 });
 
+builder.Services.AddHttpClient("PaymentClient", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:4545/");
+}).AddPolicyHandler(GetRetryPolicy()).AddPolicyHandler(GetCircuitBreakerPolicy());
+
 var app = builder.Build();
 
 // PIPELINE
@@ -92,3 +103,24 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+
+static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
+{
+    return HttpPolicyExtensions
+        .HandleTransientHttpError()              // 5xx, 408, etc.
+        .OrResult(msg => (int)msg.StatusCode == 429) // Too Many Requests
+        .WaitAndRetryAsync(
+            3,                                    // tenta 3 vezes
+            tentativa => TimeSpan.FromSeconds(Math.Pow(2, tentativa)) // 2s, 4s, 8s
+        );
+}
+
+static IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()
+{
+    return HttpPolicyExtensions
+        .HandleTransientHttpError()
+        .CircuitBreakerAsync(
+            handledEventsAllowedBeforeBreaking: 3,       // após 3 falhas seguidas
+            durationOfBreak: TimeSpan.FromSeconds(30)    // "desliga" 30s
+        );
+}
