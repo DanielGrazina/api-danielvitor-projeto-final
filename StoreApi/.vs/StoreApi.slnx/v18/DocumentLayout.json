@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -11,20 +19,12 @@
       "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|solutionrelative:controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3B0E9473-D3AB-703D-940A-766DD996B686}|StoreApi.csproj|c:\\dev\\api-danielvitor-projeto-final\\storeapi\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
@@ -102,7 +102,8 @@
               "RelativeToolTip": "Models\\OrderItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T16:48:21.735Z"
+              "WhenOpened": "2025-11-26T16:48:21.735Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -114,7 +115,8 @@
               "RelativeToolTip": "Models\\Order.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T16:47:59.088Z"
+              "WhenOpened": "2025-11-26T16:47:59.088Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -126,7 +128,8 @@
               "RelativeToolTip": "Controllers\\CartController.cs",
               "ViewState": "AgIAADQAAAAAAAAAAAAwwE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T16:05:46.114Z"
+              "WhenOpened": "2025-11-26T16:05:46.114Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -138,7 +141,8 @@
               "RelativeToolTip": "Models\\CartItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T16:03:34.418Z"
+              "WhenOpened": "2025-11-26T16:03:34.418Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -150,7 +154,8 @@
               "RelativeToolTip": "Models\\Cart.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T16:02:30.694Z"
+              "WhenOpened": "2025-11-26T16:02:30.694Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -162,11 +167,12 @@
               "RelativeToolTip": "Controllers\\SecureController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T20:46:28.257Z"
+              "WhenOpened": "2025-11-19T20:46:28.257Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -174,7 +180,8 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAowDgAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T20:12:14.583Z"
+              "WhenOpened": "2025-11-19T20:12:14.583Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -186,24 +193,25 @@
               "RelativeToolTip": "Models\\DTOs\\LoginDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T20:11:46.328Z"
+              "WhenOpened": "2025-11-19T20:11:46.328Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAqwEQAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAUwGMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-14T16:26:32.687Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
@@ -216,15 +224,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "CheckoutController.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\CheckoutController.cs",
               "RelativeDocumentMoniker": "Controllers\\CheckoutController.cs",
               "ToolTip": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\CheckoutController.cs",
               "RelativeToolTip": "Controllers\\CheckoutController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAowEIAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowDUAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T16:51:34.283Z"
+              "WhenOpened": "2025-11-26T16:51:34.283Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -236,7 +245,8 @@
               "RelativeToolTip": "Controllers\\CategoriesController.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAAIwEIAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T16:42:07.237Z"
+              "WhenOpened": "2025-11-17T16:42:07.237Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -248,11 +258,12 @@
               "RelativeToolTip": "Models\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-17T16:32:11.569Z"
+              "WhenOpened": "2025-11-17T16:32:11.569Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
@@ -273,11 +284,12 @@
               "RelativeToolTip": "Data\\StoreDbContextFactory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T16:57:30.015Z"
+              "WhenOpened": "2025-11-14T16:57:30.015Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\DEV\\api-danielvitor-projeto-final\\StoreApi\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -298,7 +310,8 @@
               "RelativeToolTip": "Data\\StoreDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T16:26:06.726Z"
+              "WhenOpened": "2025-11-14T16:26:06.726Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -310,7 +323,8 @@
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T16:25:28.401Z"
+              "WhenOpened": "2025-11-14T16:25:28.401Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -322,7 +336,8 @@
               "RelativeToolTip": "Models\\Product.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T16:25:06.017Z"
+              "WhenOpened": "2025-11-14T16:25:06.017Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -334,7 +349,8 @@
               "RelativeToolTip": "Dockerfile",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-11-14T16:05:32.467Z"
+              "WhenOpened": "2025-11-14T16:05:32.467Z",
+              "EditorCaption": ""
             }
           ]
         }

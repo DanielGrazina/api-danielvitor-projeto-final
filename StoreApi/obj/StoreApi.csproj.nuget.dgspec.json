@@ -79,13 +79,17 @@
               "target": "Package",
               "version": "[10.0.0, )"
             },
+            "Microsoft.Extensions.Http.Polly": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.4, )"
             },
             "Polly": {
               "target": "Package",
-              "version": "[8.6.4, )"
+              "version": "[8.6.5, )"
             },
             "Polly.Extensions.Http": {
               "target": "Package",

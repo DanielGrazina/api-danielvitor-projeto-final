@@ -15,10 +15,12 @@ namespace StoreApi.Controllers
     public class CheckoutController : ControllerBase
     {
         private readonly StoreDbContext _context;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public CheckoutController(StoreDbContext context)
+        public CheckoutController(StoreDbContext context, IHttpClientFactory httpClientFactory)
         {
             _context = context;
+            _httpClientFactory = httpClientFactory;
         }
 
         [Authorize]
@@ -49,10 +51,10 @@ namespace StoreApi.Controllers
 
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
-            var client = new HttpClient();
+            var client = _httpClientFactory.CreateClient("PaymentClient");
 
             var response = await client.PostAsync(
-                "http://mountebank:4545/payment",
+                "payment",
                 new StringContent("{}", Encoding.UTF8, "application/json")
             );
 

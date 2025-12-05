@@ -164,3 +164,10 @@ C:\Projeto Final Dario\api-danielvitor-projeto-final\StoreApi\obj\Debug\net8.0\S
 C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
 C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
 C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Microsoft.Extensions.Http.Polly.dll
+C:\DEV\api-danielvitor-projeto-final\StoreApi\bin\Debug\net8.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
