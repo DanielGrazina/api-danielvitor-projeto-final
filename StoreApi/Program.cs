@@ -14,8 +14,6 @@ using Polly.Timeout;
 
 var builder = WebApplication.CreateBuilder(args);
 
-Console.WriteLine("REDIS VALUE => " + builder.Configuration["Redis:ConnectionString"]);
-
 // DATABASE
 builder.Services.AddDbContext<StoreDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
