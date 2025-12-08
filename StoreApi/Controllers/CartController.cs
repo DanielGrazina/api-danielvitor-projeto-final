@@ -7,6 +7,7 @@ using System.Security.Claims;
 
 namespace StoreApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CartController : ControllerBase
@@ -18,35 +19,28 @@ namespace StoreApi.Controllers
             _context = context;
         }
 
-        // GET: api/cart/user/1
-        [HttpGet("user/{userId}")]
-        public async Task<ActionResult<Cart>> GetCart(int userId)
+        private int GetUserId() => int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+        // GET: api/cart
+        [HttpGet]
+        public async Task<ActionResult<Cart>> GetCart()
         {
+            var userId = GetUserId(); // Pega ID do Token
             var cart = await _context.Carts
                 .Include(c => c.Items)
                 .ThenInclude(i => i.Product)
                 .FirstOrDefaultAsync(c => c.UserId == userId);
 
-            if (cart == null)
-                return NotFound("Carrinho não encontrado.");
-
+            if (cart == null) return NotFound("Carrinho vazio ou não encontrado.");
             return cart;
         }
 
-        // POST: api/cart/add
-        [Authorize]
+        // POST: api/cart/add?productId=1&quantity=1
         [HttpPost("add")]
         public async Task<IActionResult> AddToCart(int productId, int quantity)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            var user = await _context.Users.FindAsync(userId);
-            if (user == null)
-                return NotFound("User not found");
-
-            var cart = await _context.Carts
-                .Include(c => c.Items)
-                .FirstOrDefaultAsync(c => c.UserId == userId);
-
+            var userId = GetUserId();
+            var cart = await _context.Carts.Include(c => c.Items).FirstOrDefaultAsync(c => c.UserId == userId);
             if (cart == null)
             {
                 cart = new Cart { UserId = userId };
@@ -54,35 +48,26 @@ namespace StoreApi.Controllers
             }
 
             var existingItem = cart.Items.FirstOrDefault(i => i.ProductId == productId);
-
             if (existingItem != null)
                 existingItem.Quantity += quantity;
             else
-                cart.Items.Add(new CartItem
-                {
-                    ProductId = productId,
-                    Quantity = quantity
-                });
+                cart.Items.Add(new CartItem { ProductId = productId, Quantity = quantity });
 
             await _context.SaveChangesAsync();
-            return Ok("Produto adicionado ao carrinho.");
+            return Ok("Produto adicionado.");
         }
 
-        // DELETE: api/cart/remove
+        // DELETE: api/cart/remove?productId=1
         [HttpDelete("remove")]
-        public async Task<IActionResult> RemoveFromCart(int userId, int productId)
+        public async Task<IActionResult> RemoveFromCart(int productId)
         {
-            var cart = await _context.Carts
-                .Include(c => c.Items)
-                .FirstOrDefaultAsync(c => c.UserId == userId);
+            var userId = GetUserId();
+            var cart = await _context.Carts.Include(c => c.Items).FirstOrDefaultAsync(c => c.UserId == userId);
 
-            if (cart == null)
-                return NotFound();
+            if (cart == null) return NotFound();
 
             var item = cart.Items.FirstOrDefault(i => i.ProductId == productId);
-
-            if (item == null)
-                return NotFound();
+            if (item == null) return NotFound();
 
             cart.Items.Remove(item);
             await _context.SaveChangesAsync();
