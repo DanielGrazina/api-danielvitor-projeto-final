@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using StoreApi.Data;
+using StoreApi.DTOs;
 using StoreApi.Models;
 using System.Text.Json;
 
@@ -23,41 +24,43 @@ namespace StoreApi.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetAll()
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetAll()
         {
-            var cached = await _cache.GetStringAsync("products_with_category");
+            string cacheKey = "products_with_category";
+            var cached = await _cache.GetStringAsync(cacheKey);
 
-            if (cached != null)
+            if (!string.IsNullOrEmpty(cached))
             {
-                var productsCached =
-                    JsonSerializer.Deserialize<List<object>>(cached);
+                var productsCached = JsonSerializer.Deserialize<List<ProductDto>>(cached,
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
                 return Ok(productsCached);
             }
 
             var products = await (
                 from p in _context.Products
-                join c in _context.Categories
-                    on p.CategoryId equals c.Id
-                select new
+                join c in _context.Categories on p.CategoryId equals c.Id
+                select new ProductDto
                 {
-                    p.Id,
-                    p.Name,
-                    p.Description,
-                    p.Price,
-                    p.Stock,
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    Stock = p.Stock,
                     CategoryName = c.Name
                 }
             ).ToListAsync();
 
+            // Guardar no Cache
             await _cache.SetStringAsync(
-                "products_with_category",
+                cacheKey,
                 JsonSerializer.Serialize(products),
                 new DistributedCacheEntryOptions
                 {
-                    AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30)
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(60) // Cache de 1 min
                 }
             );
+
             return Ok(products);
         }
 
