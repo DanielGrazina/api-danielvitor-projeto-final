@@ -3,6 +3,7 @@
     {
       "port": 4545,
       "protocol": "http",
+      "name": "Payment Service",
       "stubs": [
         {
           "predicates": [
@@ -17,13 +18,8 @@
             {
               "is": {
                 "statusCode": 200,
-                "headers": {
-                  "Content-Type": "application/json"
-                },
-                "body": {
-                  "paymentStatus": "APPROVED",
-                  "transactionId": "abc-123-test"
-                }
+                "headers": { "Content-Type": "application/json" },
+                "body": "{ \"status\": \"paid\", \"transactionId\": \"12345-mock\" }"
               }
             }
           ]

@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StoreApi.Data;
 using StoreApi.Models;
-using StoreApi.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using StoreApi.DTOs;
 
 namespace StoreApi.Controllers
 {

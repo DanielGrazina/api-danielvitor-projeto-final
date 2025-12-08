@@ -1,4 +1,4 @@
-﻿namespace StoreApi.Models.DTOs
+﻿namespace StoreApi.DTOs
 {
     public class LoginDto
     {
