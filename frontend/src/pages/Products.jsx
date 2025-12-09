@@ -1,16 +1,34 @@
 import { useEffect, useState } from "react";
 import api from "../api/http";
+import ProductCard from "../components/ProductCard";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
-      const res = await api.get("/products");
-      setProducts(res.data);
+      try {
+        const res = await api.get("/products");
+        setProducts(res.data);
+      } catch (error) {
+        console.error("Erro ao carregar produtos:", error);
+      } finally {
+        setLoading(false);
+      }
     }
     load();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center mt-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">A carregar...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mt-4">
@@ -18,20 +36,8 @@ export default function Products() {
 
       <div className="row">
         {products.map((p) => (
-          <div className="col-md-4 mb-3" key={p.id}>
-            <div className="card shadow-sm">
-              <div className="card-body">
-                <h5 className="card-title">{p.name}</h5>
-                <p className="card-text">
-                  {p.description}<br />
-                  <strong>{p.price}€</strong><br />
-                  <small className="text-muted">
-                    Categoria: {p.categoryName}
-                  </small>
-                </p>
-                <button className="btn btn-primary btn-sm">Ver mais</button>
-              </div>
-            </div>
+          <div className="col-md-4 mb-3" key={p.id || p.Id}>
+            <ProductCard data={p} />
           </div>
         ))}
       </div>
