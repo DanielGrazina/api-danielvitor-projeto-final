@@ -25,13 +25,16 @@ namespace StoreApi.Controllers
         [HttpGet]
         public async Task<ActionResult<Cart>> GetCart()
         {
-            var userId = GetUserId(); // Pega ID do Token
+            var userId = GetUserId();
             var cart = await _context.Carts
                 .Include(c => c.Items)
                 .ThenInclude(i => i.Product)
                 .FirstOrDefaultAsync(c => c.UserId == userId);
 
-            if (cart == null) return NotFound("Carrinho vazio ou não encontrado.");
+            if (cart == null)
+            {
+                return Ok(new Cart { UserId = userId, Items = new List<CartItem>() });
+            }
             return cart;
         }
 
