@@ -40,6 +40,15 @@ namespace StoreApi.Controllers
                 if (cart == null || cart.Items.Count == 0)
                     return BadRequest("Carrinho vazio");
 
+                foreach (var item in cart.Items)
+                {
+                    if (item.Product.Stock < item.Quantity)
+                    {
+                        return BadRequest($"Stock insuficiente para o produto: {item.Product.Name}. Disponível: {item.Product.Stock}");
+                    }
+                    item.Product.Stock -= item.Quantity;
+                }
+
                 var order = new Order
                 {
                     UserId = userId,

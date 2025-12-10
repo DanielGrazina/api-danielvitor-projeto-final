@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict UtngescuisfCKD66yyhasrPxWkx9T0PaIRrRVkYeVCpY8utcm4DdmlL3nsUYOXj
+\restrict REkbVMtbf0tzCQj38B0sMaS9RFDBegXsQfRXfFI3uzPj1cmc5dV09MkilBM4WBh
 
 -- Dumped from database version 16.11 (Debian 16.11-1.pgdg13+1)
 -- Dumped by pg_dump version 16.11 (Debian 16.11-1.pgdg13+1)
@@ -198,7 +198,8 @@ CREATE TABLE public."Users" (
     "Password" text NOT NULL,
     "Email" text NOT NULL,
     "Name" text NOT NULL,
-    "CreatedAt" timestamp with time zone DEFAULT '-infinity'::timestamp with time zone NOT NULL
+    "CreatedAt" timestamp with time zone DEFAULT '-infinity'::timestamp with time zone NOT NULL,
+    "Role" text DEFAULT 'Customer'::text
 );
 
 
@@ -388,5 +389,5 @@ ALTER TABLE ONLY public."Orders"
 -- PostgreSQL database dump complete
 --
 
-\unrestrict UtngescuisfCKD66yyhasrPxWkx9T0PaIRrRVkYeVCpY8utcm4DdmlL3nsUYOXj
+\unrestrict REkbVMtbf0tzCQj38B0sMaS9RFDBegXsQfRXfFI3uzPj1cmc5dV09MkilBM4WBh
 

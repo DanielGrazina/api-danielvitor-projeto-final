@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "login",
-        "Type": "StoreApi.Models.DTOs.LoginDto",
+        "Type": "StoreApi.DTOs.LoginDto",
         "IsRequired": true
       }
     ],
@@ -201,7 +201,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[StoreApi.Models.Product, StoreApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[StoreApi.DTOs.ProductDto, StoreApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
