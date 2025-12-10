@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict PBUIS4WoA3W0iVAcWPIpFBalx6RRg7Pg5OBtKkIann7KX4d7cVyXlIIciOGmXrw
+\restrict YwBaVctvzblguGQ7QQ6mfucGM6eYaqvZSiLZqBliC3iAIltezS3ceBsAHbWLSmH
 
 -- Dumped from database version 16.11 (Debian 16.11-1.pgdg13+1)
 -- Dumped by pg_dump version 16.11 (Debian 16.11-1.pgdg13+1)
@@ -22,8 +22,10 @@ SET row_security = off;
 -- Data for Name: Users; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public."Users" ("Id", "Password", "Email", "Name", "CreatedAt") VALUES (1, 'daniel', 'daniel@gmail.com', 'daniel', '2025-12-05 11:12:11.895041+00');
-INSERT INTO public."Users" ("Id", "Password", "Email", "Name", "CreatedAt") VALUES (2, 'vitor', 'vitor@gmail.com', 'vitor', '2025-12-05 16:55:04.744641+00');
+INSERT INTO public."Users" ("Password", "Email", "Name", "CreatedAt", "Role") VALUES ('daniel', 'daniel@gmail.com', 'daniel', '2025-12-05 11:12:11.895041+00', 'Manager');
+INSERT INTO public."Users" ("Password", "Email", "Name", "CreatedAt", "Role") VALUES ('vitor', 'vitor@gmail.com', 'vitor', '2025-12-05 16:55:04.744641+00', 'Admin');
+INSERT INTO public."Users" ("Password", "Email", "Name", "CreatedAt", "Role") VALUES ('user', 'user@gmail.com', 'user', '2025-12-05 16:55:04.744641+00', 'Customer');
+
 
 
 --
@@ -75,6 +77,13 @@ INSERT INTO public."Categories" ("Id", "Name") VALUES (9, 'Casa e Jardim');
 
 INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (1, '2025-12-05 11:14:43.307114+00', 250, 1);
 INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (2, '2025-12-05 11:16:33.217328+00', 250, 1);
+INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (3, '2025-12-08 16:30:01.285061+00', 1250.00, 1);
+INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (4, '2025-12-08 16:30:03.948816+00', 1250.00, 1);
+INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (5, '2025-12-08 16:30:04.581057+00', 1250.00, 1);
+INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (6, '2025-12-08 16:31:36.874652+00', 1250.00, 1);
+INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (7, '2025-12-08 16:37:59.838697+00', 1250.00, 1);
+INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (8, '2025-12-08 16:38:07.430069+00', 1250.00, 1);
+INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (9, '2025-12-09 15:29:15.553023+00', 5, 1);
 
 
 --
@@ -83,6 +92,13 @@ INSERT INTO public."Orders" ("Id", "OrderDate", "Total", "UserId") VALUES (2, '2
 
 INSERT INTO public."OrderItems" ("Id", "OrderId", "ProductId", "Quantity", "Price") VALUES (1, 1, 1, 50, 5);
 INSERT INTO public."OrderItems" ("Id", "OrderId", "ProductId", "Quantity", "Price") VALUES (2, 2, 1, 50, 5);
+INSERT INTO public."OrderItems" ("Id", "OrderId", "ProductId", "Quantity", "Price") VALUES (3, 3, 3, 1, 1250.00);
+INSERT INTO public."OrderItems" ("Id", "OrderId", "ProductId", "Quantity", "Price") VALUES (4, 4, 3, 1, 1250.00);
+INSERT INTO public."OrderItems" ("Id", "OrderId", "ProductId", "Quantity", "Price") VALUES (5, 5, 3, 1, 1250.00);
+INSERT INTO public."OrderItems" ("Id", "OrderId", "ProductId", "Quantity", "Price") VALUES (6, 6, 3, 1, 1250.00);
+INSERT INTO public."OrderItems" ("Id", "OrderId", "ProductId", "Quantity", "Price") VALUES (7, 7, 3, 1, 1250.00);
+INSERT INTO public."OrderItems" ("Id", "OrderId", "ProductId", "Quantity", "Price") VALUES (8, 8, 3, 1, 1250.00);
+INSERT INTO public."OrderItems" ("Id", "OrderId", "ProductId", "Quantity", "Price") VALUES (9, 9, 1, 1, 5);
 
 
 --
@@ -103,7 +119,7 @@ INSERT INTO public."__EFMigrationsHistory" ("MigrationId", "ProductVersion") VAL
 -- Name: CartItems_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public."CartItems_Id_seq"', 1, true);
+SELECT pg_catalog.setval('public."CartItems_Id_seq"', 4, true);
 
 
 --
@@ -124,14 +140,14 @@ SELECT pg_catalog.setval('public."Categories_Id_seq"', 9, true);
 -- Name: OrderItems_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public."OrderItems_Id_seq"', 2, true);
+SELECT pg_catalog.setval('public."OrderItems_Id_seq"', 9, true);
 
 
 --
 -- Name: Orders_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
 --
 
-SELECT pg_catalog.setval('public."Orders_Id_seq"', 2, true);
+SELECT pg_catalog.setval('public."Orders_Id_seq"', 9, true);
 
 
 --
@@ -152,5 +168,5 @@ SELECT pg_catalog.setval('public."Users_Id_seq"', 4, true);
 -- PostgreSQL database dump complete
 --
 
-\unrestrict PBUIS4WoA3W0iVAcWPIpFBalx6RRg7Pg5OBtKkIann7KX4d7cVyXlIIciOGmXrw
+\unrestrict YwBaVctvzblguGQ7QQ6mfucGM6eYaqvZSiLZqBliC3iAIltezS3ceBsAHbWLSmH
 

@@ -13,6 +13,8 @@ namespace StoreApi.Models
 
         public string Password { get; set; } = string.Empty;
 
+        public string Role { get; set; } = "Customer";
+
         [JsonIgnore]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
