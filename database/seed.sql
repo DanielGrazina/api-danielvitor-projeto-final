@@ -33,6 +33,8 @@ INSERT INTO public."Users" ("Password", "Email", "Name", "CreatedAt", "Role") VA
 --
 
 INSERT INTO public."Carts" ("Id", "UserId") VALUES (1, 1);
+INSERT INTO public."Carts" ("Id", "UserId") VALUES (2, 2);
+INSERT INTO public."Carts" ("Id", "UserId") VALUES (3, 3);
 
 
 --
