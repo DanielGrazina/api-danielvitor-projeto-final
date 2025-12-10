@@ -25,7 +25,8 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response, 
   (error) => {
-    if (error.response?.status === 401) {
+    const isLoginRequest = error.config && error.config.url.toLowerCase().includes("login");
+    if (error.response?.status === 401 && !isLoginRequest) {
       console.warn("Sessão expirada. Faça login novamente.");
       localStorage.removeItem("token");
       window.location.href = "/login";

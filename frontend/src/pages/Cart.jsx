@@ -6,6 +6,7 @@ export default function Cart() {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     loadCart();
@@ -34,13 +35,17 @@ export default function Cart() {
   }
 
   async function handleCheckout() {
+    setIsProcessing(true);
     try {
       const res = await api.post("Checkout");
       alert(`Compra com Sucesso! ID: ${res.data.id}`);
       navigate("/products");
     } catch (err) {
       console.error(err);
-      alert("Erro no checkout (Verifique se o Imposter está a correr)");
+      const msg = err.response?.data || "Erro no checkout";
+      alert(msg);
+    } finally {
+      setIsProcessing(false);
     }
   }
 
@@ -82,7 +87,12 @@ export default function Cart() {
       
       <div className="d-flex justify-content-between align-items-center border-top pt-3">
         <h3>Total: {total.toFixed(2)} €</h3>
-        <button onClick={handleCheckout} className="btn btn-primary btn-lg">Finalizar Compra</button>
+        <button 
+          onClick={handleCheckout} 
+          className="btn btn-primary btn-lg"
+          disabled={isProcessing}>
+          {isProcessing ? "A Processar..." : "Finalizar Compra"}
+        </button>
       </div>
     </div>
   );
