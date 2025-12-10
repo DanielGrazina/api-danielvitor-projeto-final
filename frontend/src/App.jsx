@@ -5,6 +5,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Navbar from "./components/Navbar";
+import AdminProducts from "./pages/admin/AdminProducs";
+import ProductForm from "./pages/admin/ProductForm";
+import AdminCategories from "./pages/admin/AdminCategories";
 
 export default function App() {
   return (
@@ -14,6 +17,22 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          
+          <Route path="/admin/products" element={
+              <ProtectedRoute adminOnly={true}><AdminProducts /></ProtectedRoute>
+          } />
+
+          <Route path="/admin/products/new" element={
+              <ProtectedRoute adminOnly={true}><ProductForm /></ProtectedRoute>
+          } />
+
+          <Route path="/admin/products/edit/:id" element={
+              <ProtectedRoute adminOnly={true}><ProductForm /></ProtectedRoute>
+          } />
+
+          <Route path="/admin/categories" element={
+              <ProtectedRoute adminOnly={true}><AdminCategories /></ProtectedRoute>
+          } />
           
           <Route path="/products" element={
               <ProtectedRoute><Products /></ProtectedRoute>
