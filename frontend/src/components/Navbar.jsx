@@ -16,26 +16,34 @@ export default function Navbar() {
         <ul className="navbar-nav me-auto">
           {user && (
             <>
-                <li className="nav-item">
+              <li className="nav-item">
                 <Link className="nav-link" to="/products">Produtos</Link>
-                </li>
-                <li className="nav-item">
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/cart">Carrinho 🛒</Link>
-                </li>
+              </li>
 
-                {(user.role === 'Admin' || user.role === 'Manager') && (
-                  <>
+              {(user.role === 'Admin' || user.role === 'Manager') && (
+                <>
                   <li className="nav-item">
                     <Link className="nav-link text-warning" to="/admin/products">Gestão (Admin)</Link>
                   </li>
 
                   <li className="nav-item">
                     <Link className="nav-link text-warning" to="/admin/categories">Categorias</Link>
-                  </li> 
-                  </>
-                )}
+                  </li>
+                </>
+              )}
 
-                
+              {user.role === 'Manager' && (
+                <li className="nav-item">
+                  <Link className="nav-link text-danger fw-bold" to="/admin/users">
+                    Utilizadores
+                  </Link>
+                </li>
+              )}
+
+
 
             </>
           )}
