@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import AdminProducts from "./pages/admin/AdminProducs";
 import ProductForm from "./pages/admin/ProductForm";
 import AdminCategories from "./pages/admin/AdminCategories";
+import ManagerUsers from "./pages/admin/ManagerUsers";
 
 export default function App() {
   return (
@@ -32,6 +33,10 @@ export default function App() {
 
           <Route path="/admin/categories" element={
               <ProtectedRoute adminOnly={true}><AdminCategories /></ProtectedRoute>
+          } />
+
+          <Route path="/admin/users" element={
+              <ProtectedRoute><ManagerUsers /></ProtectedRoute>
           } />
           
           <Route path="/products" element={
