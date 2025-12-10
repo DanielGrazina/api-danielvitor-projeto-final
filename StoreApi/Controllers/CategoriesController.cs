@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreApi.Data;
 using StoreApi.Models;
@@ -38,6 +39,7 @@ namespace StoreApi.Controllers
         }
 
         // POST: api/categories
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPost]
         public async Task<ActionResult<Category>> CreateCategory([FromBody] Category category)
         {
@@ -48,13 +50,14 @@ namespace StoreApi.Controllers
         }
 
         // PUT: api/categories/{id}
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCategory(int id, Category category)
         {
-            if (id != category.Id)
-            {
-                return BadRequest();
-            }
+            category.Id = id;
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             _context.Entry(category).State = EntityState.Modified;
 
@@ -78,6 +81,7 @@ namespace StoreApi.Controllers
         }
 
         // DELETE: api/categories/{id}
+        [Authorize(Roles = "Admin,Manager")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {

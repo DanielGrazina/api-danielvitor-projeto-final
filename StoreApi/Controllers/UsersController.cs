@@ -46,27 +46,17 @@ namespace StoreApi.Controllers
         }
 
         // PUT: api/users/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, User updatedUser)
+        [HttpPut("{id}/role")]
+        public async Task<IActionResult> UpdateRole(int id, [FromBody] string newRole)
         {
-            if (id != updatedUser.Id)
-                return BadRequest();
+            var user = await _context.Users.FindAsync(id);
+            if (user == null) return NotFound();
 
-            _context.Entry(updatedUser).State = EntityState.Modified;
+            if (user.Email == "daniel@gmail.com") return BadRequest("Não podes mudar o teu próprio role.");
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Users.Any(u => u.Id == id))
-                    return NotFound();
-
-                throw;
-            }
-
-            return NoContent();
+            user.Role = newRole;
+            await _context.SaveChangesAsync();
+            return Ok(new { message = $"Utilizador agora é {newRole}" });
         }
 
         // DELETE: api/users/5

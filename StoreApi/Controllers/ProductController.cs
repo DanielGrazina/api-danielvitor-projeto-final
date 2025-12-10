@@ -71,6 +71,7 @@ namespace StoreApi.Controllers
             return product == null ? NotFound() : product;
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPost]
         public async Task<ActionResult<Product>> Create(Product product)
         {
@@ -79,17 +80,44 @@ namespace StoreApi.Controllers
             return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Product product)
+        public async Task<IActionResult> Update(int id, [FromBody] ProductDto productDto)
         {
-            if (id != product.Id)
-                return BadRequest();
+            if (productDto.Id != 0 && id != productDto.Id)
+                return BadRequest("ID da URL difere do ID do corpo da requisição.");
 
-            _context.Entry(product).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            // 2. Validar estado do modelo (ex: campos obrigatórios)
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var product = await _context.Products.FindAsync(id);
+            if (product == null) return NotFound();
+
+            product.Name = productDto.Name;
+            product.Description = productDto.Description;
+            product.Price = productDto.Price;
+            product.Stock = productDto.Stock;
+            product.CategoryId = productDto.CategoryId != 0 ? productDto.CategoryId : product.CategoryId;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Products.Any(e => e.Id == id))
+                    return NotFound();
+                else
+                    throw;
+            }
+
+            await _cache.RemoveAsync("products_with_category");
+
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
