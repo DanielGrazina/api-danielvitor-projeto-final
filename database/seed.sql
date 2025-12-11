@@ -41,7 +41,7 @@ INSERT INTO public."Carts" ("Id", "UserId") VALUES (3, 3);
 -- Data for Name: Products; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public."Products" ("Id", "Name", "Description", "Price", "Stock", "CategoryId") VALUES (1, 'potato', 'potato', 5, 250, 1);
+INSERT INTO public."Products" ("Id", "Name", "Description", "Price", "Stock", "CategoryId") VALUES (1, 'Potato', 'Potato', 5, 250, 1);
 INSERT INTO public."Products" ("Id", "Name", "Description", "Price", "Stock", "CategoryId") VALUES (2, 'Smartphone Galaxy', 'Ecrã AMOLED 120Hz, 128GB', 699.99, 50, 2);
 INSERT INTO public."Products" ("Id", "Name", "Description", "Price", "Stock", "CategoryId") VALUES (3, 'Portátil Gaming', 'Processador i7, 16GB RAM, RTX 4060', 1250.00, 10, 2);
 INSERT INTO public."Products" ("Id", "Name", "Description", "Price", "Stock", "CategoryId") VALUES (4, 'Monitor 27"', 'Monitor 4K IPS para profissionais', 350.50, 25, 2);
@@ -62,7 +62,7 @@ INSERT INTO public."Products" ("Id", "Name", "Description", "Price", "Stock", "C
 -- Data for Name: Categories; Type: TABLE DATA; Schema: public; Owner: admin
 --
 
-INSERT INTO public."Categories" ("Id", "Name") VALUES (1, 'agricula');
+INSERT INTO public."Categories" ("Id", "Name") VALUES (1, 'Agricula');
 INSERT INTO public."Categories" ("Id", "Name") VALUES (2, 'Tecnologia');
 INSERT INTO public."Categories" ("Id", "Name") VALUES (3, 'Roupa');
 INSERT INTO public."Categories" ("Id", "Name") VALUES (4, 'Livros');

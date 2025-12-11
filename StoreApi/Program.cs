@@ -32,6 +32,14 @@ builder.Services.AddControllers()
         o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
 
+// SERVICES
+builder.Services.AddScoped<StoreApi.Services.IUserService, StoreApi.Services.UserService>();
+builder.Services.AddScoped<StoreApi.Services.IAuthService, StoreApi.Services.AuthService>();
+builder.Services.AddScoped<StoreApi.Services.ICartService, StoreApi.Services.CartService>();
+builder.Services.AddScoped<StoreApi.Services.ICategoryService, StoreApi.Services.CategoryService>();
+builder.Services.AddScoped<StoreApi.Services.ICheckoutService, StoreApi.Services.CheckoutService>();
+builder.Services.AddScoped<StoreApi.Services.IProductService, StoreApi.Services.ProductService>();
+
 // SWAGGER + AUTH
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -83,9 +91,12 @@ builder.Services.AddAuthentication(o =>
     };
 });
 
+
+// Mount with Polly Policies
 builder.Services.AddHttpClient("PaymentClient", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:4545/");
+    var url = builder.Configuration["ImposterUrl"] ?? "http://localhost:4545";
+    client.BaseAddress = new Uri(url);
 }).AddPolicyHandler(GetRetryPolicy()).AddPolicyHandler(GetCircuitBreakerPolicy());
 
 // CORS

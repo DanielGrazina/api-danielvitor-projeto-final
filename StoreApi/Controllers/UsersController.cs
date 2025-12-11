@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreApi.Data;
+using StoreApi.DTOs;
 using StoreApi.Models;
+using StoreApi.Services;
 
 namespace StoreApi.Controllers
 {
@@ -9,68 +12,63 @@ namespace StoreApi.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
-        private readonly StoreDbContext _context;
-
-        public UsersController(StoreDbContext context)
+        private readonly IUserService _userService;
+        public UsersController(IUserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
-        // GET: api/users
+        [Authorize(Roles = "Manager")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            var users = await _userService.GetAllAsync();
+            return Ok(users);
         }
 
-        // GET: api/users/5
+        [Authorize]
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<UserDto>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
-
-            if (user == null)
-                return NotFound();
-
-            return user;
+            var user = await _userService.GetByIdAsync(id);
+            if (user == null) return NotFound();
+            return Ok(user);
         }
 
-        // POST: api/users
+        [Authorize(Roles = "Manager")]
         [HttpPost]
-        public async Task<ActionResult<User>> CreateUser(User user)
+        public async Task<ActionResult<UserDto>> CreateUser(User user)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            var createdUser = await _userService.CreateAsync(user);
 
-            return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+            if (createdUser == null)
+                return BadRequest("Email já existe ou erro ao criar.");
+
+            return CreatedAtAction(nameof(GetUser), new { id = createdUser.Id }, createdUser);
         }
 
-        // PUT: api/users/5
+        [Authorize(Roles = "Manager")]
         [HttpPut("{id}/role")]
         public async Task<IActionResult> UpdateRole(int id, [FromBody] string newRole)
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null) return NotFound();
-
-            if (user.Email == "daniel@gmail.com") return BadRequest("Não podes mudar o teu próprio role.");
-
-            user.Role = newRole;
-            await _context.SaveChangesAsync();
-            return Ok(new { message = $"Utilizador agora é {newRole}" });
+            try
+            {
+                var success = await _userService.UpdateRoleAsync(id, newRole);
+                if (!success) return NotFound();
+                return Ok(new { message = $"Role atualizado para {newRole}" });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // DELETE: api/users/5
+        [Authorize(Roles = "Manager")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
-
-            if (user == null)
-                return NotFound();
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
+            var success = await _userService.DeleteAsync(id);
+            if (!success) return NotFound();
             return NoContent();
         }
     }

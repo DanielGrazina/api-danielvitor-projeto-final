@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using StoreApi.Data;
 using StoreApi.Models;
+using StoreApi.Services;
 
 namespace StoreApi.Controllers
 {
@@ -10,32 +9,27 @@ namespace StoreApi.Controllers
     [Route("api/[controller]")]
     public class CategoriesController : ControllerBase
     {
-        private readonly StoreDbContext _context;
+        private readonly ICategoryService _categoryService;
 
-        public CategoriesController(StoreDbContext context)
+        public CategoriesController(ICategoryService categoryService)
         {
-            _context = context;
+            _categoryService = categoryService;
         }
 
         // GET: api/categories
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
+            return Ok(await _categoryService.GetAllAsync());
         }
 
         // GET: api/categories/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Category>> GetCategory(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return category;
+            var category = await _categoryService.GetByIdAsync(id);
+            if (category == null) return NotFound();
+            return Ok(category);
         }
 
         // POST: api/categories
@@ -43,39 +37,25 @@ namespace StoreApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Category>> CreateCategory([FromBody] Category category)
         {
-            _context.Categories.Add(category);
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            return CreatedAtAction(nameof(GetCategory), new { id = category.Id }, category);
+            var createdCategory = await _categoryService.CreateAsync(category);
+            return CreatedAtAction(nameof(GetCategory), new { id = createdCategory.Id }, createdCategory);
         }
 
         // PUT: api/categories/{id}
         [Authorize(Roles = "Admin,Manager")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCategory(int id, Category category)
+        public async Task<IActionResult> UpdateCategory(int id, [FromBody] Category category)
         {
+            if (id != category.Id && category.Id != 0)
+                return BadRequest("ID da URL não coincide com o corpo.");
+
             category.Id = id;
 
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            var result = await _categoryService.UpdateAsync(id, category);
 
-            _context.Entry(category).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.Categories.Any(e => e.Id == id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            if (result == null) return NotFound();
 
             return NoContent();
         }
@@ -85,17 +65,16 @@ namespace StoreApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-
-            if (category == null)
+            try
             {
-                return NotFound();
+                var success = await _categoryService.DeleteAsync(id);
+                if (!success) return NotFound();
+                return NoContent();
             }
-
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -29,7 +29,6 @@
   <ItemGroup>
     <Folder Include="Cache\" />
     <Folder Include="Resilience\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
