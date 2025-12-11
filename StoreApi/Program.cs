@@ -18,6 +18,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<StoreDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Cache Local (In-Memory)
+builder.Services.AddMemoryCache();
+
 // REDIS
 builder.Services.AddStackExchangeRedisCache(options =>
 {
