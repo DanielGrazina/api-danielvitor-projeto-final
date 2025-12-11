@@ -5,6 +5,9 @@ export default function ManagerUsers() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // pesquisa (nome ou ID)
+  const [searchTerm, setSearchTerm] = useState("");
+
   // Guardar mudança pendente de role
   const [pendingRoleChange, setPendingRoleChange] = useState(null);
   // { userId, name, email, fromRole, toRole }
@@ -83,13 +86,34 @@ export default function ManagerUsers() {
 
   if (loading) return <div className="text-center mt-5">A carregar utilizadores...</div>;
 
+  // Filtrar por nome OU ID
+  const filteredUsers = users.filter((u) => {
+    const term = searchTerm.toLowerCase();
+    const name = (u.name || "").toLowerCase();
+    const id = String(u.id || "").toLowerCase();
+    return name.includes(term) || id.includes(term);
+  });
+
   return (
     <div className="container mt-4">
       <h2>Gestão de Utilizadores (Manager)</h2>
 
+      {/* Barra de pesquisa */}
+      <div className="row mt-3 mb-3">
+        <div className="col-md-4">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Pesquisar por nome ou ID..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
+
       {/* CARD de confirmação (aparece só quando houver pendingRoleChange) */}
       {pendingRoleChange && (
-        <div className="card border-warning mt-3">
+        <div className="card border-warning mb-3">
           <div className="card-body">
             <h5 className="card-title">Confirmar alteração de permissões</h5>
             <p className="mb-3">
@@ -123,54 +147,62 @@ export default function ManagerUsers() {
           </tr>
         </thead>
         <tbody>
-          {users.map((u) => {
-            const currentRole = u.role || "Customer";
+          {filteredUsers.length === 0 ? (
+            <tr>
+              <td colSpan="5" className="text-center">
+                Nenhum utilizador encontrado.
+              </td>
+            </tr>
+          ) : (
+            filteredUsers.map((u) => {
+              const currentRole = u.role || "Customer";
 
-            // Enquanto houver confirmação pendente PARA ESTE USER,
-            // o dropdown deve continuar a mostrar o role antigo (fromRole).
-            const isPendingThisUser =
-              pendingRoleChange && pendingRoleChange.userId === u.id;
+              // Enquanto houver confirmação pendente PARA ESTE USER,
+              // o dropdown deve continuar a mostrar o role antigo (fromRole).
+              const isPendingThisUser =
+                pendingRoleChange && pendingRoleChange.userId === u.id;
 
-            const selectValue = isPendingThisUser
-              ? pendingRoleChange.fromRole
-              : currentRole;
+              const selectValue = isPendingThisUser
+                ? pendingRoleChange.fromRole
+                : currentRole;
 
-            return (
-              <tr key={u.id}>
-                <td>{u.id}</td>
-                <td>{u.name}</td>
-                <td>{u.email}</td>
-                <td>
-                  <select
-                    className="form-select form-select-sm"
-                    value={selectValue}
-                    onChange={(e) => handleRoleSelect(u, e.target.value)}
-                    style={{ maxWidth: "150px" }}
-                    // Opcional: bloquear mudar outros users enquanto há um pending
-                    disabled={!!pendingRoleChange && !isPendingThisUser}
-                    title={
-                      pendingRoleChange && !isPendingThisUser
-                        ? "Conclui/cancela a alteração pendente primeiro."
-                        : ""
-                    }
-                  >
-                    <option value="Customer">Customer</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Manager">Manager</option>
-                  </select>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(u.id)}
-                    className="btn btn-danger btn-sm"
-                    disabled={!!pendingRoleChange} // opcional
-                  >
-                    Apagar
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+              return (
+                <tr key={u.id}>
+                  <td>{u.id}</td>
+                  <td>{u.name}</td>
+                  <td>{u.email}</td>
+                  <td>
+                    <select
+                      className="form-select form-select-sm"
+                      value={selectValue}
+                      onChange={(e) => handleRoleSelect(u, e.target.value)}
+                      style={{ maxWidth: "150px" }}
+                      // Opcional: bloquear mudar outros users enquanto há um pending
+                      disabled={!!pendingRoleChange && !isPendingThisUser}
+                      title={
+                        pendingRoleChange && !isPendingThisUser
+                          ? "Conclui/cancela a alteração pendente primeiro."
+                          : ""
+                      }
+                    >
+                      <option value="Customer">Customer</option>
+                      <option value="Admin">Admin</option>
+                      <option value="Manager">Manager</option>
+                    </select>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(u.id)}
+                      className="btn btn-danger btn-sm"
+                      disabled={!!pendingRoleChange} // opcional
+                    >
+                      Apagar
+                    </button>
+                  </td>
+                </tr>
+              );
+            })
+          )}
         </tbody>
       </table>
     </div>
