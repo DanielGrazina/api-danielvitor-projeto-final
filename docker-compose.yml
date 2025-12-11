@@ -9,10 +9,13 @@ services:
     depends_on:
       redis:
         condition: service_healthy
+      db:
+        condition: service_started
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=projeto;Username=admin;Password=admin"
       Redis__ConnectionString: "redis:6379"
+      ImposterUrl: "http://mountebank:4545"
     networks:
       - backend
 
