@@ -1,21 +1,57 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using StoreApi.Data;
 using StoreApi.Models;
+using System.Text.Json;
 
 namespace StoreApi.Services
 {
     public class CategoryService : ICategoryService
     {
         private readonly StoreDbContext _context;
+        private readonly IDistributedCache _cache;
 
-        public CategoryService(StoreDbContext context)
+        private const string CacheKey = "all_categories";
+
+        public CategoryService(StoreDbContext context, IDistributedCache cache)
         {
             _context = context;
+            _cache = cache;
         }
 
         public async Task<IEnumerable<Category>> GetAllAsync()
         {
-            return await _context.Categories.ToListAsync();
+            try
+            {
+                var cached = await _cache.GetStringAsync(CacheKey);
+                if (!string.IsNullOrEmpty(cached))
+                {
+                    return JsonSerializer.Deserialize<List<Category>>(cached) ?? new List<Category>();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Se o Redis estiver em baixo, logamos o erro mas NÃO paramos a aplicação
+                Console.WriteLine($"[Cache Error] Não foi possível ler do Redis: {ex.Message}");
+            }
+
+            var categories = await _context.Categories.ToListAsync();
+
+            try
+            {
+                var options = new DistributedCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30)
+                };
+
+                await _cache.SetStringAsync(CacheKey, JsonSerializer.Serialize(categories), options);
+            }
+            catch
+            {
+                Console.WriteLine("[Cache Error] Não foi possível guardar no Redis.");
+            }
+
+            return categories;
         }
 
         public async Task<Category?> GetByIdAsync(int id)
@@ -27,6 +63,10 @@ namespace StoreApi.Services
         {
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
+
+            // INVALIDAÇÃO DE CACHE
+            await InvalidateCacheAsync();
+
             return category;
         }
 
@@ -36,8 +76,11 @@ namespace StoreApi.Services
             if (existingCategory == null) return null;
 
             existingCategory.Name = category.Name;
-
             await _context.SaveChangesAsync();
+
+            // INVALIDAÇÃO DE CACHE
+            await InvalidateCacheAsync();
+
             return true;
         }
 
@@ -46,7 +89,6 @@ namespace StoreApi.Services
             var category = await _context.Categories.FindAsync(id);
             if (category == null) return false;
 
-            // Verificar se existem produtos nesta categoria
             bool hasProducts = await _context.Products.AnyAsync(p => p.CategoryId == id);
             if (hasProducts)
             {
@@ -55,7 +97,24 @@ namespace StoreApi.Services
 
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
+
+            // INVALIDAÇÃO DE CACHE
+            await InvalidateCacheAsync();
+
             return true;
+        }
+
+        // Método auxiliar para limpar o cache sem repetir código
+        private async Task InvalidateCacheAsync()
+        {
+            try
+            {
+                await _cache.RemoveAsync(CacheKey);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Cache Error] Falha ao limpar cache: {ex.Message}");
+            }
         }
     }
 }
