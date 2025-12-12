@@ -22,6 +22,9 @@ export default function Navbar() {
               <li className="nav-item">
                 <Link className="nav-link" to="/cart">Carrinho 🛒</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile">Minha Conta 👤</Link>
+              </li>
 
               {(user.role === 'Admin' || user.role === 'Manager') && (
                 <>

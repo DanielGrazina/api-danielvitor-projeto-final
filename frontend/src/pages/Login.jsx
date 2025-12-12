@@ -18,11 +18,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-      console.log("A tentar login com:", email);
       
       const response = await api.post("Auth/login", { email, password });
-      console.log("Resposta da API:", response.data);
-
       if (response.data && response.data.token) {
           const sucesso = login(response.data.token);
           

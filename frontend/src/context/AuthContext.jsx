@@ -40,12 +40,12 @@ export function AuthProvider({ children }) {
             return null;
         }
         
-        // Tenta encontrar o Role em várias propriedades comuns
-        const role = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] 
-                  || decoded.role 
-                  || "Customer";
-                  
-        return { token, role, name: decoded.unique_name || "User" };
+        
+        const role = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || decoded.role || "Customer";
+        const email = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"] || decoded.email || "";
+        const name = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] || decoded.unique_name || decoded.name || "User";
+
+        return { token, role, email, name };
     }
     return null;
   });
@@ -60,13 +60,11 @@ export function AuthProvider({ children }) {
 
     localStorage.setItem("token", token);
     
-    const role = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] 
-              || decoded.role 
-              || "Customer";
+    const role = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || decoded.role || "Customer";
+    const email = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"] || decoded.email || "";
+    const name = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] || decoded.unique_name || decoded.name || "User";
 
-    console.log("Login com sucesso. Role detetado:", role); // DEBUG
-
-    setUser({ token, role, name: decoded.unique_name });
+    setUser({ token, role, email, name });
     return true;
   };
 

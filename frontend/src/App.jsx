@@ -9,6 +9,7 @@ import AdminProducts from "./pages/admin/AdminProducs";
 import ProductForm from "./pages/admin/ProductForm";
 import AdminCategories from "./pages/admin/AdminCategories";
 import ManagerUsers from "./pages/admin/ManagerUsers";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
@@ -41,6 +42,10 @@ export default function App() {
           
           <Route path="/products" element={
               <ProtectedRoute><Products /></ProtectedRoute>
+          } />
+
+          <Route path="/profile" element={
+              <ProtectedRoute><Profile /></ProtectedRoute>
           } />
 
           {/* Nova Rota */}
