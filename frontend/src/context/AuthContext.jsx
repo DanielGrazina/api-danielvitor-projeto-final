@@ -64,9 +64,7 @@ export function AuthProvider({ children }) {
     const email = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"] || decoded.email || "";
     const name = decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] || decoded.unique_name || decoded.name || "User";
 
-    console.log("Login com sucesso. Role detetado:", role); // DEBUG
-
-    setUser({ token, role, name: decoded.unique_name });
+    setUser({ token, role, email, name });
     return true;
   };
 
