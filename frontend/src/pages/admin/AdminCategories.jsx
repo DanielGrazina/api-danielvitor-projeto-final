@@ -58,7 +58,6 @@ export default function AdminCategories() {
     
     try {
       await api.delete(`/Categories/${id}`);
-      // Remove localmente para ser instantâneo
       setCategories(prev => prev.filter(c => c.id !== id));
       toast.success("Categoria removida.");
     } catch (err) {

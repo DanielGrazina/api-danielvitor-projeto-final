@@ -49,7 +49,7 @@ export default function ManagerUsers() {
     } catch (err) {
       console.error(err);
       toast.error("Erro ao atualizar permissão.");
-      loadUsers(); // Reverte visualmente
+      loadUsers();
     } finally {
       setIsProcessing(false);
     }
@@ -59,7 +59,6 @@ export default function ManagerUsers() {
     const fromRole = u.role || "Customer";
     if (fromRole === newRole) return;
 
-    // Scroll para o topo para ver o alerta
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
     setPendingRoleChange({
@@ -98,7 +97,7 @@ export default function ManagerUsers() {
     return name.includes(term) || email.includes(term);
   });
 
-  // Helper Visual para Roles
+  // Helper para Roles
   const getRoleBadge = (role) => {
       switch(role) {
           case 'Admin': 
@@ -140,7 +139,7 @@ export default function ManagerUsers() {
         </div>
       </div>
 
-      {/* ÁREA DE ALERTA (Confirmação de Mudança) */}
+      {/* ÁREA DE ALERTA (Confirmação de Mudança de role) */}
       {pendingRoleChange && (
         <div className="alert alert-warning border-0 shadow-sm d-flex flex-column flex-md-row align-items-center justify-content-between p-4 mb-4 rounded-3" style={{ borderLeft: "5px solid #f59e0b" }}>
             <div className="d-flex align-items-center gap-3 mb-3 mb-md-0">
@@ -214,7 +213,7 @@ export default function ManagerUsers() {
                                 <tr key={u.id} className={isPending ? "table-warning" : ""}>
                                     <td className="ps-4">
                                         <div className="d-flex align-items-center gap-3">
-                                            {/* Avatar Gerado */}
+                                            {/* Avatar Gen */}
                                             <div 
                                                 className="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white shadow-sm"
                                                 style={{ 

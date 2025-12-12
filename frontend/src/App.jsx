@@ -11,21 +11,16 @@ import AdminCategories from "./pages/admin/AdminCategories";
 import ManagerUsers from "./pages/admin/ManagerUsers";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
-import { Toaster } from "react-hot-toast"; // Importante para as notificações funcionarem
+import { Toaster } from "react-hot-toast"; 
 
 export default function App() {
   return (
-    // "min-vh-100" e "d-flex" garantem que o footer (se adicionar depois) fica no fundo
     <div className="d-flex flex-column min-vh-100">
       <Navbar />
       
-      {/* Adicionei o Toaster aqui para não esquecer as notificações */}
       <Toaster position="top-center" reverseOrder={false} />
 
-      {/* REMOVI o "container mt-4" daqui. 
-          Assim a Home ocupa o ecrã todo e as outras páginas 
-          (que já têm "container" dentro delas) continuam direitas. 
-      */}
+     
       <div className="flex-grow-1">
         <Routes>
           {/* ROTA PRINCIPAL: Mostra a Home Page */}
@@ -68,7 +63,6 @@ export default function App() {
               <ProtectedRoute><ManagerUsers /></ProtectedRoute>
           } />
 
-          {/* Se a pessoa tentar ir para "/home" ou qualquer rota inexistente, manda para a raiz */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>

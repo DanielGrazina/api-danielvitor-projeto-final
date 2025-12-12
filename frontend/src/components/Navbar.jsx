@@ -16,12 +16,12 @@ export default function Navbar() {
     <nav 
       className="navbar navbar-expand-lg navbar-dark sticky-top"
       style={{ 
-        // AZUL ESCURO PROFISSIONAL (Navy Blue)
         background: "#1e3a8a", 
-        // Gradiente muito subtil para não ficar "chapado"
         backgroundImage: "linear-gradient(to right, #172554, #1e3a8a)",
         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-        padding: "0.8rem 0"
+        padding: "0.8rem 0",
+        zIndex: 1050, 
+        position: "sticky"
       }}
     >
       <div className="container">
@@ -112,7 +112,7 @@ export default function Navbar() {
                     className="btn btn-light btn-sm px-4 rounded-pill fw-bold shadow-sm" 
                     to="/register"
                     onClick={handleNavCollapse}
-                    style={{ color: "#1e3a8a" }} // Texto do botão na cor da navbar
+                    style={{ color: "#1e3a8a" }}
                   >
                     Registar
                   </Link>

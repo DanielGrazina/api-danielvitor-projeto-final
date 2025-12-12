@@ -52,7 +52,6 @@ export default function Register() {
 
     setLoading(true);
     try {
-      // Registo com role 'Customer' por defeito
       await api.post("Users", {
         name: name.trim(),
         email: email.trim(),

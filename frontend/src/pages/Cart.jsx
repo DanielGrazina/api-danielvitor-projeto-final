@@ -29,7 +29,6 @@ export default function Cart() {
       setCart(res.data);
     } catch (err) {
       console.error(err);
-      // Se der erro 404 ou null, assumimos carrinho vazio
       setCart(null);
     } finally {
       setLoading(false);
@@ -39,7 +38,7 @@ export default function Cart() {
   async function removeItem(productId) {
     try {
       await api.delete(`Cart/remove?productId=${productId}`);
-      await loadCart(); // Recarrega para atualizar totais
+      await loadCart(); 
       toast.success("Produto removido.");
     } catch (err) {
       console.error(err);
@@ -52,7 +51,7 @@ export default function Cart() {
     try {
       const res = await api.post("Checkout");
       toast.success(`Encomenda #${res.data.id} confirmada!`, { duration: 5000 });
-      navigate("/profile"); // Redireciona para o histórico
+      navigate("/profile");
     } catch (err) {
       console.error(err);
       const msg = err.response?.data || "Erro ao finalizar compra.";

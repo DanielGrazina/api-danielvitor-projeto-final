@@ -8,7 +8,7 @@ export default function ProductForm() {
     const [product, setProduct] = useState({ 
         name: "", 
         description: "", 
-        price: "", // Inicializar vazio para evitar "0" no input
+        price: "",
         stock: "", 
         categoryId: "" 
     });
@@ -26,7 +26,6 @@ export default function ProductForm() {
         api.get("/Categories")
            .then(res => {
                setCategories(res.data);
-               // Se for criação e houver categorias, seleciona a primeira por defeito
                if (!isEdit && res.data.length > 0) {
                    setProduct(prev => ({ ...prev, categoryId: res.data[0].id }));
                }
