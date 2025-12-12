@@ -77,6 +77,22 @@ namespace StoreApi.Services
             return true;
         }
 
+        public async Task<bool> UpdateProfileAsync(int userId, string name, string? password)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null) return false;
+
+            user.Name = name;
+
+            if(!string.IsNullOrEmpty(password))
+            {
+                user.Password = password;
+            }
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<bool> DeleteAsync(int id)
         {
             var user = await _context.Users.FindAsync(id);

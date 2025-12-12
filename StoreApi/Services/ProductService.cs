@@ -70,7 +70,7 @@ namespace StoreApi.Services
             try
             {
                 await _redisCache.SetStringAsync(CacheKey, JsonSerializer.Serialize(products),
-                    new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(2) });
+                    new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(5) });
             }
             catch {}
             
