@@ -1,68 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  /* --- PALETA PROFISSIONAL (AZUL NAVY) --- */
+  
+  /* Cor Principal (Botões, Destaques) - Azul Real Vibrante */
+  --primary: #2563eb;       
+  
+  /* Hover (Quando passa o rato) - Azul Mais Escuro */
+  --primary-hover: #1d4ed8; 
+  
+  /* Cor de Fundo Escura (Navbar, Footer, Lado Esquerdo Login) - Azul Noite */
+  --dark-bg: #1e293b;       /* Slate 800 (Azul Acinzentado Profundo) */
+  
+  /* Fundo Geral da Página */
+  --light-bg: #f8fafc;      /* Slate 50 (Branco Frio) */
+  
+  /* Cartões e Paineis */
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;  /* Slate 200 */
+  
+  /* Sombras Suaves */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 body {
-  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--light-bg);
+  color: #334155; /* Slate 700 (Texto Cinza Escuro Legível) */
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* --- NAVBAR CUSTOM --- */
+.navbar-custom {
+  /* Azul Escuro Sólido (Sem degradê exagerado) */
+  background-color: #1e3a8a !important; 
+  /* Opcional: Um degradê muito subtil apenas para dar profundidade */
+  background: linear-gradient(to right, #172554, #1e3a8a) !important;
+  box-shadow: var(--shadow-md);
+  padding: 0.8rem 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+.nav-link {
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: rgba(255, 255, 255, 0.85) !important;
+  transition: all 0.2s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.nav-link:hover, .nav-link.active {
+  color: #ffffff !important;
+  transform: translateY(-1px);
 }
+
+/* --- UTILITÁRIOS --- */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Ajuste para botões dentro da Navbar (Branco com texto Azul) */
+.navbar-custom .btn-primary {
+  background-color: #ffffff;
+  color: #1e3a8a; /* Azul Escuro */
+  border: none;
+  font-weight: 600;
+}
+.navbar-custom .btn-primary:hover {
+  background-color: #f1f5f9;
+}
+
+.text-primary { color: var(--primary) !important; }
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.4s ease-out forwards; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #64748b; }
