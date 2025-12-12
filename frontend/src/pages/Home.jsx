@@ -10,7 +10,6 @@ export default function Home() {
         className="d-flex align-items-center position-relative text-white"
         style={{
             minHeight: "85vh",
-            // Gradiente Azul Escuro Profissional
             background: `linear-gradient(135deg, rgba(23, 37, 84, 0.95) 0%, rgba(30, 58, 138, 0.9) 100%), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1470&auto=format&fit=crop')`,
             backgroundSize: "cover",
             backgroundPosition: "center",

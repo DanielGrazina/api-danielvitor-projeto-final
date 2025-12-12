@@ -19,7 +19,7 @@ export default function Profile() {
   const [profile, setProfile] = useState({ name: "", password: "" });
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("profile"); // 'profile' ou 'orders'
+  const [activeTab, setActiveTab] = useState("profile");
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {

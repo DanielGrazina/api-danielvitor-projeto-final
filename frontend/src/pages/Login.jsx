@@ -26,7 +26,6 @@ export default function Login() {
         const sucesso = login(response.data.token);
         
         if (sucesso) {
-          // REDIRECIONA AUTOMATICAMENTE PARA A HOME
           navigate("/"); 
         } else {
           setError("Erro ao guardar sessão.");
@@ -36,7 +35,6 @@ export default function Login() {
       }
     } catch (err) {
       console.error("Login error:", err);
-      // Tratamento de erros seguro
       const msg = err.response?.data;
       setError(typeof msg === 'string' ? msg : "Credenciais inválidas.");
     } finally {
