@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using StoreApi.Data;
 using StoreApi.DTOs;
 using StoreApi.Models;
@@ -10,11 +11,13 @@ namespace StoreApi.Services
     {
         private readonly StoreDbContext _context;
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IDistributedCache _cache;
 
-        public CheckoutService(StoreDbContext context, IHttpClientFactory httpClientFactory)
+        public CheckoutService(StoreDbContext context, IHttpClientFactory httpClientFactory, IDistributedCache cache)
         {
             _context = context;
             _httpClientFactory = httpClientFactory;
+            _cache = cache;
         }
 
         public async Task<CheckoutResult> ProcessCheckoutAsync(int userId)
@@ -86,6 +89,8 @@ namespace StoreApi.Services
 
             _context.CartItems.RemoveRange(cart.Items);
             await _context.SaveChangesAsync();
+
+            await _cache.RemoveAsync($"orders_user_{userId}");
 
             return new CheckoutResult { Success = true, CreatedOrder = order };
         }

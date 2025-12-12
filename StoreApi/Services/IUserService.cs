@@ -9,6 +9,7 @@ namespace StoreApi.Services
         Task<UserDto?> GetByIdAsync(int id);
         Task<UserDto?> CreateAsync(User user);
         Task<bool> UpdateRoleAsync(int id, string newRole);
+        Task<bool> UpdateProfileAsync(int userId, string name, string? password);
         Task<bool> DeleteAsync(int id);
     }
 }

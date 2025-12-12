@@ -42,6 +42,7 @@ builder.Services.AddScoped<StoreApi.Services.ICartService, StoreApi.Services.Car
 builder.Services.AddScoped<StoreApi.Services.ICategoryService, StoreApi.Services.CategoryService>();
 builder.Services.AddScoped<StoreApi.Services.ICheckoutService, StoreApi.Services.CheckoutService>();
 builder.Services.AddScoped<StoreApi.Services.IProductService, StoreApi.Services.ProductService>();
+builder.Services.AddScoped<StoreApi.Services.IOrderService, StoreApi.Services.OrderService>();
 
 // SWAGGER + AUTH
 builder.Services.AddEndpointsApiExplorer();
