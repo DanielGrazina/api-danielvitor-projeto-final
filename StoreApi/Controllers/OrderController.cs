@@ -8,8 +8,6 @@ using System.Security.Claims;
 
 namespace StoreApi.Controllers
 {
-    public class OrderController
-    {
         [Authorize]
         [ApiController]
         [Route("api/[controller]")]
@@ -27,9 +25,7 @@ namespace StoreApi.Controllers
             {
                 var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 var orders = await _orderService.GetOrdersByUserIdAsync(userId);
-
                 return Ok(orders);
             }
         }
-    }
 }
