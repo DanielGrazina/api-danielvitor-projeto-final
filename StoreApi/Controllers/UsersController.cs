@@ -51,7 +51,7 @@ namespace StoreApi.Controllers
 
 
         // Post: api/Users
-        [Authorize(Roles = "Manager")]
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<UserDto>> CreateUser(User user)
         {
