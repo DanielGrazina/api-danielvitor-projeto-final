@@ -1,158 +1,160 @@
-# 🛍️ StoreAPI - Plataforma de E-Commerce Full-Stack
+# 🛍️ StoreAPI - Full-Stack E-Commerce Platform
 
 ![Status](https://img.shields.io/badge/Status-Concluído-success)
 ![.NET](https://img.shields.io/badge/.NET-8.0-purple)
 ![React](https://img.shields.io/badge/React-18-blue)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED)
 
-> Projeto final desenvolvido no âmbito da UC00609. Uma solução completa de e-commerce focada em **Performance**, **Segurança** e **Resiliência**.
+> PFinal project developed for the UC00609 course. A complete e-commerce solution focused on **Performance**, **Security**, and **Resilience**.
 
 ---
 
-## 📋 Índice
+## 📋 Table of Contents
 
-- [Sobre o Projeto](#-sobre-o-projeto)
-- [Arquitetura e Tecnologias](#-arquitetura-e-tecnologias)
-- [Funcionalidades](#-funcionalidades)
-- [Estrutura do Projeto](#-estrutura-do-projeto)
-- [Como Executar (Docker)](#-como-executar-docker)
-- [Credenciais de Teste](#-credenciais-de-teste)
-- [Autores](#-autores)
-
----
-
-## 📖 Sobre o Projeto
-
-O **StoreAPI** é uma aplicação web que simula uma loja online completa. O sistema permite aos clientes navegar, adicionar produtos ao carrinho e realizar compras simuladas, enquanto administradores e gestores podem gerir o catálogo e os utilizadores.
-
-O diferencial deste projeto reside na sua arquitetura robusta, implementando padrões como **Service Pattern**, **Cache Híbrido** e **Resiliência de Microsserviços**.
+- [About the Project](#-about-the-project)
+- [Architecture & Tech Stack](#tech-stack)
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [How to Run (Docker)](#-how-to-run-docker)
+- [Test Credentials](#-test-credentials)
+- [Authors](#-authors)
 
 ---
 
-## 🛠️ Arquitetura e Tecnologias
+## 📖 About the Project
 
-O projeto segue uma arquitetura baseada em microsserviços containerizados via Docker.
+**StoreAPI** is a web application that simulates a fully functional online store. The system allows customers to browse products, manage their cart, and perform simulated purchases, while administrators and managers oversee the catalog and user base.
+
+The key differentiator of this project is its robust architecture, implementing advanced patterns such as **Service Pattern**, **Hybrid Caching**, and **Microservices Resilience**.
+
+---
+
+## <a id="tech-stack"></a>🛠️ Architecture & Tech Stack
+
+The project follows a microservices-based architecture, containerized via Docker.
 
 ### **Backend (.NET 8)**
-- **API RESTful:** Controllers limpos utilizando DTOs.
-- **Service Pattern:** Lógica de negócio isolada dos controladores.
-- **Entity Framework Core:** ORM para comunicação com PostgreSQL.
-- **Cache Híbrido:** Implementação de cache local (MemoryCache) e distribuído (Redis) para alta performance.
-- **Polly:** Implementação de **Resiliência** (Retry & Circuit Breaker) para chamadas HTTP e conexões de base de dados.
-- **JWT (JSON Web Token):** Autenticação e Autorização com perfis (Admin, Manager, Customer).
+- **RESTful API:** Clean Controllers using DTOs.
+- **Service Pattern:** Business logic isolated from controllers.
+- **Entity Framework Core:** ORM for PostgreSQL communication.
+- **Cache Híbrido:** Implementation of both local (MemoryCache) and distributed (Redis) caching for high performance.
+- **Polly:** **Resilience** implementation (Retry & Circuit Breaker) for HTTP calls and database connections.
+- **JWT (JSON Web Token):** Authentication and Authorization with roles (Admin, Manager, Customer).
 
 ### **Frontend (React + Vite)**
-- **SPA:** Single Page Application rápida e reativa.
-- **Bootstrap 5 + CSS Custom:** Design moderno, responsivo e personalizado.
-- **Context API:** Gestão de estado global para Autenticação.
-- **Axios:** Cliente HTTP com interceptors para gestão de tokens.
+- **SPA:** Fast and reactive Single Page Application.
+- **Bootstrap 5 + Custom CSS:** Modern, responsive, and personalized design.
+- **Context API:** Global state management for Authentication.
+- **Axios:** HTTP client with interceptors for token management.
 
-### **Infraestrutura e Ferramentas**
-- **PostgreSQL:** Base de dados relacional.
-- **Redis:** Cache distribuído.
-- **Mountebank:** Mock server para simulação de gateway de pagamentos.
-- **Docker Compose:** Orquestração de todos os serviços.
-
----
-
-## ✨ Funcionalidades
-
-### 👤 Cliente (Customer)
-- **Catálogo:** Visualizar produtos com paginação, filtros por nome e categoria.
-- **Carrinho:** Adicionar/remover itens, persistência de dados.
-- **Checkout:** Validação de stock em tempo real e simulação de pagamento.
-- **Perfil:** Histórico de encomendas, edição de dados pessoais e password.
-
-### 🛡️ Administração (Admin & Manager)
-- **Gestão de Produtos:** Criar, editar e apagar produtos (com atualização automática de cache).
-- **Gestão de Categorias:** CRUD completo de categorias.
-- **Gestão de Utilizadores (Apenas Manager):** Listar utilizadores e alterar permissões (Promover a Admin, etc.).
+### **Infrastructure & Tools**
+- **PostgreSQL:** Relational database.
+- **Redis:** Distributed cache.
+- **Mountebank:** Mock server for payment gateway simulation.
+- **Docker Compose:** Orchestration of all services.
 
 ---
 
-## 📂 Estrutura do Projeto
+## ✨ Features
+
+### 👤 Customer
+- **Catalog:** View products with pagination, name search, and category filtering.
+- **Shopping Cart:** Add/remove items with data persistence.
+- **Checkout**: Real-time stock validation and payment simulation.
+- **Profile:** Order history, personal data editing, and password management.
+
+### 🛡️ Administration (Admin & Manager)
+- **Product Management:** Create, edit, and delete products (with automatic cache invalidation/update).
+- **Category Management:** Full CRUD for categories.
+- **User Management (Manager Only):** List users and modify permissions (e.g., promote to Admin).
+
+---
+
+## 📂 Project Structure
 
 ```bash
 api-projeto-final/
 ├── api/                  # Backend (.NET 8)
-│   ├── Controllers/      # Endpoints da API
-│   ├── Services/         # Lógica de Negócio (Caching, BD)
-│   ├── Models/           # Entidades da Base de Dados
-│   └── DTOs/             # Objetos de Transferência de Dados
-├── database/             # Scripts SQL (Schema e Seed inicial)
+│   ├── Controllers/      # API Endpoints
+│   ├── Services/         # Business Logic (Caching, DB)
+│   ├── Models/           # Database Entities
+│   └── DTOs/             # Data Transfer Objects
+├── database/             # SQL Scripts (Schema and Initial Seed)
 ├── frontend/             # Frontend (React + Vite)
 │   ├── src/
-│   │   ├── pages/        # Páginas (Home, Cart, Profile, Admin...)
+│   │   ├── pages/        # Pages (Home, Cart, Profile, Admin...)
 │   │   ├── components/   # Navbar, Footer, ProductCard...
 │   │   └── context/      # AuthContext
-├── imposter/             # Configuração do Mountebank (Mock Pagamentos)
-└── docker-compose.yml    # Orquestração dos contentores
+├── imposter/             # Mountebank Configuration (Payment Mock)
+└── docker-compose.yml    # Container Orchestration
 ```
 ---
 
-## 🚀 Como Executar (Docker)
+## 🚀 How to Run (Docker)
 
-A forma mais simples de correr o projeto é usando o **Docker**, pois configura automaticamente a Base de Dados, o Redis e a API.
+The easiest way to run the project is using Docker, as it automatically configures the Database, Redis, and the API.
 
-### Pré-requisitos
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) instalado.
-- [Node.js](https://nodejs.org/) (v18 ou superior) instalado.
+### Prerequisites
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) installed.
+- [Node.js](https://nodejs.org/) (v18 or higher) installed.
 
-### Passo 1: Infraestrutura e Backend (Docker)
-A base de dados é **configurada e populada automaticamente** (Schema + Seed) na primeira execução, graças ao volume mapeado no Docker Compose.
+### Step 1: Infrastructure & Backend (Docker)
+The database is automatically configured and populated (Schema + Seed) on the first run, thanks to the mapped volume in Docker Compose.
 
-1. **Na raiz do projeto, inicie os serviços:**
-   ```bash
-   docker-compose up --build
-   ```
-2. **Aguarde até ver a mensagem de que a API está a correr na porta 5000.**
+1. **In the project root, start the services:**
 
-    **Nota:** Se precisar de reiniciar a base de dados do zero (para aplicar alterações no seed), execute: docker-compose down -v (para apagar os volumes) e depois docker-compose up --build novamente.
+```bash
+docker-compose up --build
+```
+2. **Wait until you see the message indicating the API is running on port 5000.**
 
-### Passo 2: Frontend (React)
-Com o backend a correr, abra um novo terminal para iniciar o site.
+**Note:** If you need to reset the database from scratch (to apply seed changes), run: docker-compose down -v (to remove volumes) and then docker-compose up --build again.
 
-1. **Entre na pasta do frontend:**
+### Step 2: Frontend (React)
+With the backend running, open a new terminal to start the website.
+
+1. **Navigate to the frontend folder:**
 
 ```bash
 cd frontend
 ```
 
-2. **Instale as dependências:**
+2. **Install dependencies:**
 
 ```bash
 npm install
 ```
 
-3. **Inicie o servidor de desenvolvimento:**
+3. **Start the development server:**
 
 ```bash
 npm run dev
 ```
 
-### 🔗 Links de Acesso
-Depois de tudo iniciado:
+### 🔗 Access Links
+Once everything is up and running:
 
-Loja (Frontend): http://localhost:5173 (ou a porta indicada no terminal do Vite)
+* **Store (Frontend):** http://localhost:5173 (or the port shown in your terminal)
 
-Documentação API (Swagger): http://localhost:5000/swagger
+* **API Documentation (Swagger):** http://localhost:5000/swagger
 
-Mock de Pagamentos (Imposter): http://localhost:4545
+* **Payment Mock (Imposter):** http://localhost:4545
 
 ---
-## 🔑 Credenciais de Teste
-O projeto inicia com dados fictícios. Podes usar estas contas para testar os diferentes níveis de acesso:
-| Perfil | Email | Password | Permissões |
+## 🔑 Test Credentials
+The project starts with dummy data. You can use these accounts to test different access levels:
+
+| Perfil | Email | Password | Permissions |
 | :--- | :--- | :--- | :--- |
-| **Admin** | `daniel@gmail.com` | `daniel` | Gestão Total |
-| **Manager** | `vitor@gmail.com` | `vitor` | Gestão de Produtos |
-| **Cliente** | `user@gmail.com` | `user` | Comprar |
+| **Admin** | `daniel@gmail.com` | `daniel` | Full Management |
+| **Manager** | `vitor@gmail.com` | `vitor` | Product Management |
+| **Customer** | `user@gmail.com` | `user` | Purchasing |
 
-**Nota:** Podes registar uma nova conta na página de Registo (será criada com perfil "Customer"). Para testar o Manager, usa o Admin para alterar o Role de um utilizador na base de dados ou na gestão de users (se disponível).
+**Note:** You can register a new account on the Registration page (it will be created with the "Customer" role). To test the Manager role, use the Admin account to change a user's Role in the database or user management interface.
 
 ---
-## 👥 Autores
-**Desenvolvido por:**
+## 👥 Authors
+**Developed by:**
  - Daniel Grazina
 
  - Vitor Andrade
