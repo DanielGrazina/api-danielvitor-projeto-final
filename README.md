@@ -5,7 +5,7 @@
 ![React](https://img.shields.io/badge/React-18-blue)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED)
 
-> PFinal project developed for the UC00609 course. A complete e-commerce solution focused on **Performance**, **Security**, and **Resilience**.
+> Final project developed for the UC00609 course. A complete e-commerce solution focused on **Performance**, **Security**, and **Resilience**.
 
 ---
 
@@ -144,7 +144,7 @@ Once everything is up and running:
 ## 🔑 Test Credentials
 The project starts with dummy data. You can use these accounts to test different access levels:
 
-| Perfil | Email | Password | Permissions |
+| Role | Email | Password | Permissions |
 | :--- | :--- | :--- | :--- |
 | **Admin** | `daniel@gmail.com` | `daniel` | Full Management |
 | **Manager** | `vitor@gmail.com` | `vitor` | Product Management |
